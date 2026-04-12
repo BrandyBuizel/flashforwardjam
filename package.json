@@ -1,11 +1,12 @@
 {
-  "name": "flashforwardjam",
+  "name": "FAST FOOD FUNKIN'",
   "version": "1.0.0",
   "description": "electron-app ruffle-wrapper swf",
   "keywords": [
     "swf",
     "ruffle",
     "rhythm",
+    "flashforwardjam",
     "jam"
   ],
   "homepage": "https://github.com/BrandyBuizel/flashforwardjam#readme",
@@ -21,6 +22,7 @@
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
