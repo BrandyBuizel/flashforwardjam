@@ -10,8 +10,8 @@ const createWindow = () => {
   win.loadFile('index.html')
 }
 
-//app.on('ready', () => {
-app.whenReady().then(() => {
+app.on('ready', () => {
+//app.whenReady().then(() => {
   createWindow()
 })
 
