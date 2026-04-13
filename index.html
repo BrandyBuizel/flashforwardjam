@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%; height: 100%; overflow: hidden; background-color: #000;">
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+        http-equiv="X-Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'"
+    />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        #flash-container {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        canvas {
+            display: block;
+            background-color: #000 !important;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>FAST FOOD FUNKIN'</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            autoplay: "on",
+            unmuteOverlay: "hidden",
+            splashScreen: true,
+            logLevel: "info",
+            contextMenu: "off",
+            allowScriptAccess: true,
+            allowFullscreen: true,
+        };
+    </script>
+</head>
+<body style="margin: 0; background-color: #000; overflow: hidden; width: 100%; height: 100%;">
+    <div id="flash-container" style="width: 100%; height: 100%; background-color: #000;"></div>
+</body>
+<script>
+    // Cache for save data string
+    window.cachedSaveData = null;
+
+    window.addEventListener("DOMContentLoaded", async () => {
+        const ruffle = window.RufflePlayer?.newest();
+        if (!ruffle) {
+            console.error("Ruffle not found");
+        return;
+        }
+
+        const container = document.getElementById("flash-container");
+        window.player = ruffle.createPlayer();
+        container.appendChild(player);
+
+        window.player.style.width = "100%";
+        window.player.style.height = "100%";
+        window.player.style.backgroundColor = "#000000";
+        window.player.load("flashforwardjam.swf");
+
+        try {
+            window.cachedSaveData = await window.electronAPI.requestSaveData();
+        } catch (e) {
+            console.error("Failed to cache save data:", e);
+            window.cachedSaveData = null;
+        }
+    });
+
+    // Synchronous function for AS2 ExternalInterface.call to get cached save data
+    function loadSaveDataFromElectron() {
+        return window.cachedSaveData;
+    }
+
+    function unlockSteamAchievement(achName) {
+        if (window.steamAPI?.unlockAchievement) {
+            window.steamAPI.unlockAchievement(achName);
+        }
+    }
+
+    window.toggleFullScreen = () => {
+        console.log("toggleFullScreen from html!");
+        window.electronAPI?.toggleFullscreen?.();
+    }
+
+    window.exitGame = () => {
+        console.log("exitGame from html!");
+        window.electronAPI?.exitGame?.();
+    }
+
+    function handleSaveData(jsonString) {
+        try {
+            const saveObj = JSON.parse(jsonString);
+            window.cachedSaveData = jsonString;
+            window.electronAPI?.saveGameData(jsonString);
+        } catch (e) {
+            console.error("Failed to parse save data JSON:", e);
+        }
+    }
+
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+</script>
+</html>

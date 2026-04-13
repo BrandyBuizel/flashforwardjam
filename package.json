@@ -1,0 +1,32 @@
+{
+  "name": "FAST FOOD FUNKIN'",
+  "version": "1.0.0",
+  "description": "electron-app ruffle-wrapper swf",
+  "keywords": [
+    "swf",
+    "ruffle",
+    "rhythm",
+    "flashforwardjam",
+    "flash",
+    "jam"
+  ],
+  "homepage": "https://github.com/BrandyBuizel/flashforwardjam#readme",
+  "bugs": {
+    "url": "https://github.com/BrandyBuizel/flashforwardjam/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandyBuizel/flashforwardjam.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Milktoast Stuff",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "electron": "^41.2.0"
+  }
+}
