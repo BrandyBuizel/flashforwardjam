@@ -1,4 +1,4 @@
-# FAST FOOD FUNKIN'
+![# FAST FOOD FUNKIN'](<steam/Hero Banner.png>)
 #### [brandondriesse.com/games](https://brandondriesse.com/games/) • [Newgrounds](https://www.newgrounds.com/portal/view/782761) • [Steam](https://store.steampowered.com/app/4698120/FAST_FOOD_FUNKIN/)
 
 **Have some beats with yo' mickey dee double-cheese.**
