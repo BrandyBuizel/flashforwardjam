@@ -13,7 +13,7 @@ jobs:
       contents: read
     steps:
       - name: Discord
-        uses: sarisia/actions-status-discord@5ddd3b114a98457dd80a39b2f00b6a998cd69008
+        uses: sarisia/actions-status-discord@v1.16.0
         if: always()
         with:
           webhook: ${{secrets.DISCORD_WEBHOOK}}
