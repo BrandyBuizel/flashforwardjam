@@ -1,0 +1,4 @@
+[submodule "ruffle"]
+	path = ruffle
+	url = https://github.com/Fancy2209/ruffle
+	branch = FFF_Based_Good

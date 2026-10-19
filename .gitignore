@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 /Config
 /Cache
 /builds
+.DS_Store
+*.zip
